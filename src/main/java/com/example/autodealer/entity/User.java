@@ -9,26 +9,25 @@ import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 @Entity
-@Table(name = "makes")
+@Table (name = "users")
 @Setter
 @Getter
-@AllArgsConstructor
 @NoArgsConstructor
-public class Make {
+@AllArgsConstructor
+public class User {
 
     @Id
     @GeneratedValue
-    private long makeId;
+    private long userId;
 
-    private String name;
+    private String fullName;
+    private String email;
+    private String phoneNumber;
 
-    @OneToMany(mappedBy = "make")
-    private List<Model> models = new ArrayList<>();
-
-
+    @OneToMany (mappedBy = "user")
+    private List<Appointment> appointments = new ArrayList<>();
 
 
 }

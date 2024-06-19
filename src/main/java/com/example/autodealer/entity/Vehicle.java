@@ -33,9 +33,7 @@ public class Vehicle {
     @Enumerated(EnumType.STRING)
     private VehicleType vehicleType;
 
-    private Float price;
-    private Float kilometers;
-    private Date registerOnDate;
+
 
 
     @ManyToOne
