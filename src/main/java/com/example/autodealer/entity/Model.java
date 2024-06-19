@@ -6,6 +6,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "models")
 @Setter
@@ -16,12 +19,14 @@ public class Model {
 
     @Id
     @GeneratedValue
-    private long id;
+    private long modelId;
 
     private String name;
 
     @ManyToOne
-    @JoinColumn(name = "make_id")
+    @JoinColumn(name = "makeId")
     private Make make;
 
+    @OneToMany(mappedBy = "model")
+    private List<Vehicle> vehicle = new ArrayList<>();
 }

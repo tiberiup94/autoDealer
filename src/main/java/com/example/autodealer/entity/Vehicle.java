@@ -4,7 +4,9 @@ package com.example.autodealer.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "vehicles")
@@ -17,14 +19,13 @@ public class Vehicle {
 
     @Id
     @GeneratedValue
-    private long id;
+    private long vehicleId;
 
     private String name;
     private Integer power;
     private Integer capacity;
 
-//    @Column(unique = true)
-//    private String vin;
+
 
     @Enumerated(EnumType.STRING)
     private GasType gasType;
@@ -37,5 +38,11 @@ public class Vehicle {
     private Date registerOnDate;
 
 
+    @ManyToOne
+    @JoinColumn(name = "modelId")
+    private Model model;
+
+    @OneToMany(mappedBy = "vehicle")
+    private List<RegistredCar> registredCars = new ArrayList<>();
 
 }

@@ -21,8 +21,7 @@ public class Make {
 
     @Id
     @GeneratedValue
-    @Column(name = "make_id")
-    private long id;
+    private long makeId;
 
     private String name;
 
