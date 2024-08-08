@@ -7,7 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Date;
+import java.sql.Date;
+
 
 @Entity
 @Table(name = "cars_registred")
@@ -15,7 +16,7 @@ import java.util.Date;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class RegistredCar {
+public class RegisteredCar {
 
 
     @Id
@@ -25,6 +26,8 @@ public class RegistredCar {
     private String name;
     private Float price;
     private Float kilometers;
+
+    @Column
     private Date registerOnDate;
 
     @Column (unique = true)
@@ -32,7 +35,7 @@ public class RegistredCar {
 
 
     @ManyToOne
-    @JoinColumn(name = "vehicleId")
+    @JoinColumn(name = "vehicleId", nullable = false)
     private Vehicle vehicle;
 
 }

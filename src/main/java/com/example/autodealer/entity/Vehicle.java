@@ -1,11 +1,11 @@
 package com.example.autodealer.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -26,14 +26,13 @@ public class Vehicle {
     private Integer capacity;
 
 
-
+    @Column
     @Enumerated(EnumType.STRING)
     private GasType gasType;
 
+    @Column
     @Enumerated(EnumType.STRING)
     private VehicleType vehicleType;
-
-
 
 
     @ManyToOne
@@ -41,6 +40,7 @@ public class Vehicle {
     private Model model;
 
     @OneToMany(mappedBy = "vehicle")
-    private List<RegistredCar> registredCars = new ArrayList<>();
+    @JsonIgnore
+    private List<RegisteredCar> registeredCars = new ArrayList<>();
 
 }

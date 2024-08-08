@@ -1,5 +1,6 @@
 package com.example.autodealer.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -27,6 +28,8 @@ public class Model {
     @JoinColumn(name = "makeId")
     private Make make;
 
+
     @OneToMany(mappedBy = "model")
+    @JsonIgnore
     private List<Vehicle> vehicle = new ArrayList<>();
 }
